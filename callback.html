@@ -2,20 +2,66 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>TikTok OAuth Callback</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>인증 완료 - 데일리무드리빙 오토포스팅</title>
 <style>
-body { font-family: monospace; background:#111; color:#0f0; padding:40px; }
-textarea { width:100%; height:120px; font-size:16px; background:#000; color:#0f0; padding:10px; }
+  :root{--bg:#faf7f2;--card:#fff;--ink:#2b2620;--muted:#6f665b;--accent:#c98a5e;--accent-dark:#a96e46;--line:#ece5da;--soft:#f3ede4}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .util{background:var(--ink);color:#e9ded1;font-size:13px}
+  .util .in{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;justify-content:flex-end;gap:20px;align-items:center;height:38px}
+  .util a{color:#e9ded1}.util a:hover{text-decoration:underline}
+  header{border-bottom:1px solid var(--line);background:rgba(250,247,242,.92)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1080px;margin:0 auto;padding:0 24px}
+  .brand{font-weight:800;font-size:19px;letter-spacing:-.3px}.brand span{color:var(--accent)}
+  .menu{display:flex;gap:24px;font-size:15px;color:var(--muted)}.menu a:hover{color:var(--ink)}
+  .wrap{max-width:620px;margin:70px auto;padding:0 24px;text-align:center}
+  .check{width:72px;height:72px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:34px;color:var(--accent-dark)}
+  h1{font-size:28px;letter-spacing:-.5px;margin-bottom:12px}
+  p.lead{color:var(--muted);font-size:16px;margin-bottom:28px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;text-align:left}
+  label{display:block;font-weight:600;font-size:14px;margin-bottom:10px}
+  textarea{width:100%;height:96px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;
+    background:var(--soft);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px;resize:none}
+  .hint{color:var(--muted);font-size:13px;margin-top:12px}
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px;margin-top:40px;text-align:center}
+  footer a{margin:0 10px}footer a:hover{color:var(--ink)}
+  @media(max-width:600px){.menu{display:none}}
 </style>
 </head>
 <body>
-<h2>TikTok 인증 완료</h2>
-<p>아래 code 값을 복사해서 파이썬 스크립트에 붙여넣으세요.</p>
-<textarea id="out" readonly></textarea>
+<div class="util"><div class="in"><a href="terms.html">이용약관</a><a href="privacy.html">개인정보처리방침</a><a href="mailto:tjdbejr31@gmail.com">문의</a></div></div>
+<header>
+  <div class="nav">
+    <a class="brand" href="index.html">데일리무드리빙<span>·</span>오토포스팅</a>
+    <nav class="menu"><a href="index.html">홈</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보처리방침</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="check">✓</div>
+  <h1>틱톡 계정 연동이 완료되었습니다</h1>
+  <p class="lead">인증이 정상적으로 완료되었습니다. 아래 인증 코드를 서비스 화면에 입력하면 콘텐츠 게시를 시작할 수 있습니다.</p>
+  <div class="card">
+    <label for="out">인증 코드</label>
+    <textarea id="out" readonly></textarea>
+    <p class="hint">이 코드는 계정 연동 확인용이며, 일정 시간이 지나면 만료됩니다. 코드가 보이지 않으면 연동을 다시 시도해 주세요.</p>
+  </div>
+</main>
+
+<footer>
+  <a href="index.html">홈</a>
+  <a href="terms.html">이용약관</a>
+  <a href="privacy.html">개인정보처리방침</a>
+  <a href="mailto:tjdbejr31@gmail.com">문의</a>
+  <div style="margin-top:12px">© 2026 데일리무드리빙. 크리에이터를 위한 틱톡 콘텐츠 발행 서비스.</div>
+</footer>
+
 <script>
-const params = new URLSearchParams(window.location.search);
-const code = params.get('code') || '(no code found in URL)';
-document.getElementById('out').value = code;
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code') || '(코드를 찾을 수 없습니다. 연동을 다시 시도해 주세요.)';
+  document.getElementById('out').value = code;
 </script>
 </body>
 </html>
